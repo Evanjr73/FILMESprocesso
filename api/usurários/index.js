@@ -1,14 +1,14 @@
 import express from "express"
-import userRoutes from "./routes/users"
+import userRoutes from "./routes/users.js"
 
 import cors from "cors"
 
 const app = express()
 
-app.user(express.json())
+app.use(express.json())
 
 app.use(cors())
 
-app.user("/", userRoutes)
+app.use("/", userRoutes)
 
 app.listen(8800)
