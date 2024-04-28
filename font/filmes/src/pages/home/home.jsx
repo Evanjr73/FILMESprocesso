@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import Grid from "../../componets/grid";
+import Gridhome from "../../componets/gridhome";
 /////////////////////////////////////////
 
 function Home() {
@@ -29,7 +29,7 @@ function Home() {
 
   useEffect(() => {
     getUsers();
-  }, [setUsers]);
+  }, []);
 
   ////////////////
 
@@ -44,7 +44,7 @@ function Home() {
             <Comidas></Comidas>
             <Comidas></Comidas> */}
         <div className="grid-menu" >
-          <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers}></Grid>
+          <Gridhome setOnEdit={setOnEdit} users={users} setUsers={setUsers}></Gridhome>
 
         </div>
 

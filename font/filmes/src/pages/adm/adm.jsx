@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-
-import Gridhome from '../../componets/gridhome';
-
+import { useEffect, useState } from 'react';
+import Grid from '../../componets/grid';
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import Form from "../../componets/from"
+import axios from 'axios';
 function Adm() {
     const history = useNavigate('/')
 
@@ -9,6 +12,24 @@ function Adm() {
         history('/')
 
     }
+    const [users, setUsers] = useState([]);
+ 
+    const [onEdit, setOnEdit] = useState(null);
+  
+    const getUsers = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800/");
+        setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+      } catch (error) {
+        toast.error(error);
+      }
+    };
+  
+  
+  
+    useEffect(() => {
+      getUsers();
+    }, []);
 
     return (
         <div id='adm'>
@@ -19,10 +40,11 @@ function Adm() {
 
                 <div id='containeradm-2'>
                     <h1 style={{ display: "flex", marginLeft: "28vw" }}>ADICIONAR FILME</h1>
+                    <Form></Form>
 
 
                     <div >
-                        <Gridhome></Gridhome>
+                        <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers}></Grid>
                         {/* <Admm ></Admm> */}
                     </div>
 
