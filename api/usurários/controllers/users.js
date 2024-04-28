@@ -2,7 +2,7 @@ import {db} from "../db.js"
 
 
 export const getUsers = (_, res ) => {
-    const q = "SELECT * FROM usuario";
+    const q = "SELECT * FROM filmes";
 
     db.query(q , (err, data)=>{
         if (err) return res.json(err);
@@ -12,12 +12,12 @@ export const getUsers = (_, res ) => {
 }
 export const addUser =  (req , res)=>{
     const q =
-    "INSERT INTO usuario(`nome`, `email`, `senha`) VALUES(?)";
+    "INSERT INTO filmes(`nome`, `categoria`, `descricao`) VALUES(?)";
 
   const values = [
     req.body.nome,
-    req.body.email,
-    req.body.senha,
+    req.body.categoria,
+    req.body.descricao,
   ];
 
   db.query(q, [values], (err) => {
@@ -30,29 +30,29 @@ export const addUser =  (req , res)=>{
 
 export const updateUser = (req, res) =>{
     const q =
-    "UPDATE usuario SET `nome` = ?, `email` = ?, `senha` = ?,  WHERE `id` = ?";
+    "UPDATE filmes SET `nome` = ?, `categoria` = ?, `descricao` = ?,  WHERE `id` = ?";
 
   const values = [
     req.body.nome,
-    req.body.email,
-    req.body.senha,
+    req.body.categoria,
+    req.body.descricao,
 
   ];
 
   db.query(q, [...values, req.params.id], (err) => {
     if (err) return res.json(err);
 
-    return res.status(200).json("Usuário atualizado com sucesso.");
+    return res.status(200).json("Filme atualizado com sucesso.");
   });
 } 
 
 
 export const deleteUser = (req, res) =>{
-    const q = "DELETE FROM usuario WHERE 'id ' = ?";
+    const q = "DELETE FROM filmes WHERE 'id ' = ?";
 
     db.query( q , [req.params.id], (err)=>{
         if (err) return res.json(err);
-        return res.status(200).json("Usuário deletedo com sucesso")
+        return res.status(200).json("Filme deletedo com sucesso")
     })
 } 
 
