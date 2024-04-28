@@ -38,8 +38,8 @@ function Adm() {
 
             <div id='containeradm' >
 
-                <div id='containeradm-2'>
-                    <h1 style={{ display: "flex", marginLeft: "28vw" }}>ADICIONAR FILME</h1>
+                <div id='containeradm-2' style={{display:"flex", flexDirection:"column" , alignItems:"center"}}>
+                    <h1 style={{ display: "flex",  }}>ADICIONAR FILME</h1>
                     <Form></Form>
 
 

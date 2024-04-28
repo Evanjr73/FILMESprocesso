@@ -2,42 +2,44 @@ import axios from "axios";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import "./css/from.css"
+// const FormContainer = styled.form`
+//   display: flex;
+//   align-items: flex-end;
+//   gap: 10px;
+//   flex-wrap: wrap;
+//   background-color: #fff;
+//   padding: 20px;
+//   box-shadow: 0px 0px 5px #ccc;
+//   border-radius: 5px;
+// `;
 
-const FormContainer = styled.form`
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 5px;
+// const InputArea = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `;
+
+// const Input = styled.input`
+//   width: 120px;
+//   padding: 0 10px;
+//   border: 1px solid #bbb;
+//   border-radius: 5px;
+//   height: 40px;
+// `;
+
+const Label = styled.label`
+  color: black
 `;
 
-const InputArea = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  width: 120px;
-  padding: 0 10px;
-  border: 1px solid #bbb;
-  border-radius: 5px;
-  height: 40px;
-`;
-
-const Label = styled.label``;
-
-const Button = styled.button`
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  background-color: #2c73d2;
-  color: white;
-  height: 42px;
-`;
+// const Button = styled.button`
+//   padding: 10px;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   border: none;
+//   background-color: #2c73d2;
+//   color: white;
+//   height: 42px;
+// `;
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
   const ref = useRef();
@@ -108,23 +110,23 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
   };
 
   return (
-    <FormContainer ref={ref} onSubmit={handleSubmit} >
-      <InputArea>
+    <div className="FormContainer" ref={ref} onSubmit={handleSubmit} style={{maxWidth:"60vw"}} >
+      <div className="InputArea">
         <Label>Nome</Label>
-        <Input name="nome" />
-      </InputArea>
-      <InputArea>
+        <input name="nome" />
+      </div >
+      <div className="InputArea">
         <Label>categoria</Label>
-        <Input name="categoria"/>
-      </InputArea>
-      <InputArea>
+        <input name="categoria"/>
+      </div >
+      <div className="InputArea">
         <Label>descricao</Label>
-        <Input name="descricao" />
-      </InputArea>
+        <input name="descricao" />
+      </div >
    
 
-      <Button type="submit">SALVAR</Button>
-    </FormContainer>
+      <button type="submit">SALVAR</button>
+    </div>
   );
 };
 
