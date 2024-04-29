@@ -36,10 +36,11 @@ export const Td = styled.td`
 const Grid = ({ users, setUsers, setOnEdit }) => {
   const handleEdit = (item) => {
     setOnEdit(item);
+    console.log("clicou")
   };
 
   const handleDelete = async (id) => {
-    console.log("delete");
+    console.log("delete" , id);
     await axios
       .delete("http://localhost:8800/" + id)
       .then(({ data }) => {
@@ -70,7 +71,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
             <Td width="30%">{item.categoria}</Td>
             <Td width="20%">{item.descricao}</Td>
             <Td alignCenter width="5%">
-              <FaEdit onClick={() => handleEdit(item)} />
+             
             </Td>
             <Td alignCenter width="5%">
               <FaTrash onClick={() => handleDelete(item.id)} />

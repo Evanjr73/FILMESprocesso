@@ -110,7 +110,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
   };
 
   return (
-    <div className="FormContainer" ref={ref} onSubmit={handleSubmit} style={{maxWidth:"60vw"}} >
+    <form className="FormContainer" ref={ref} onSubmit={handleSubmit} style={{maxWidth:"60vw"}} >
       <div className="InputArea">
         <Label>Nome</Label>
         <input name="nome" />
@@ -126,7 +126,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
    
 
       <button type="submit">SALVAR</button>
-    </div>
+    </form>
   );
 };
 
